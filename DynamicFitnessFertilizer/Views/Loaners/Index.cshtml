@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DynamicFitnessFertilizer.Models.Loaner>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Loaners</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateLoaned)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LawnTool.ToolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Member.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Member.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Member.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateLoaned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LawnTool.ToolName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Member.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Member.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Member.Phone)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LoanerID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LoanerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LoanerID })
+        </td>
+    </tr>
+}
+
+</table>

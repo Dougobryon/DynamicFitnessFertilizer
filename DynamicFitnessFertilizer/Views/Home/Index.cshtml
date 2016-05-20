@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Dynamic Fitness and Fertilizer</h1>
+    <p class="lead">Connecting Fitness Members with Fertilizing Tools Since 2016</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Members", "Index", "Members")</h2>
+        <p>
+            Our Dynamic Fitness members love their yards as much as their yoga, so we've launched a tool-sharing program exclusively for our community.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("LawnTools", "Index", "LawnTools")</h2>
+        <p>Our extensive list of curated lawn tools help our members care for their health AND their hedges!</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Loaners", "Index", "Loaners") </h2>
+        <p>Why clutter your garage with equipment you only use once a year? Check out our long list of loaner tools and reserve one today!</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>

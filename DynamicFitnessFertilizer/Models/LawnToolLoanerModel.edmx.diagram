@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dd05effad0fb46b59cb1b1abd58ce0db" Name="Diagram1">
+        <EntityTypeShape EntityType="DFFDBModel.LawnTool" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DFFDBModel.Loaner" Width="1.5" PointX="3.125" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DFFDBModel.Member" Width="1.5" PointX="0.5" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="DFFDBModel.FK_Loaners_LawnTools" />
+        <AssociationConnector Association="DFFDBModel.FK_Loaners_Members" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

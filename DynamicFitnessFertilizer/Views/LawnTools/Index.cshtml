@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DynamicFitnessFertilizer.Models.LawnTool>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lawn Tools</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ToolName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToolBrand)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToolName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToolBrand)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LawnToolsID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LawnToolsID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LawnToolsID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DFFDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LawnTools">
+          <Key>
+            <PropertyRef Name="LawnToolsID" />
+          </Key>
+          <Property Name="LawnToolsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToolName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ToolBrand" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Loaners">
+          <Key>
+            <PropertyRef Name="LoanerID" />
+          </Key>
+          <Property Name="LoanerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="LawnToolID" Type="int" Nullable="false" />
+          <Property Name="DateLoaned" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="FitnessPriority" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Loaners_LawnTools">
+          <End Role="LawnTools" Type="Self.LawnTools" Multiplicity="1" />
+          <End Role="Loaners" Type="Self.Loaners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LawnTools">
+              <PropertyRef Name="LawnToolsID" />
+            </Principal>
+            <Dependent Role="Loaners">
+              <PropertyRef Name="LawnToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loaners_Members">
+          <End Role="Members" Type="Self.Members" Multiplicity="1" />
+          <End Role="Loaners" Type="Self.Loaners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Loaners">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DFFDBModelStoreContainer">
+          <EntitySet Name="LawnTools" EntityType="Self.LawnTools" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loaners" EntityType="Self.Loaners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Loaners_LawnTools" Association="Self.FK_Loaners_LawnTools">
+            <End Role="LawnTools" EntitySet="LawnTools" />
+            <End Role="Loaners" EntitySet="Loaners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loaners_Members" Association="Self.FK_Loaners_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Loaners" EntitySet="Loaners" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DFFDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LawnTool">
+          <Key>
+            <PropertyRef Name="LawnToolsID" />
+          </Key>
+          <Property Name="LawnToolsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToolName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ToolBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Loaners" Relationship="DFFDBModel.FK_Loaners_LawnTools" FromRole="LawnTool" ToRole="Loaner" />
+        </EntityType>
+        <EntityType Name="Loaner">
+          <Key>
+            <PropertyRef Name="LoanerID" />
+          </Key>
+          <Property Name="LoanerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="LawnToolID" Type="Int32" Nullable="false" />
+          <Property Name="DateLoaned" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LawnTool" Relationship="DFFDBModel.FK_Loaners_LawnTools" FromRole="Loaner" ToRole="LawnTool" />
+          <NavigationProperty Name="Member" Relationship="DFFDBModel.FK_Loaners_Members" FromRole="Loaner" ToRole="Member" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FitnessPriority" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Loaners" Relationship="DFFDBModel.FK_Loaners_Members" FromRole="Member" ToRole="Loaner" />
+        </EntityType>
+        <EntityContainer Name="DFFDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LawnTools" EntityType="Self.LawnTool" />
+          <EntitySet Name="Loaners" EntityType="Self.Loaner" />
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <AssociationSet Name="FK_Loaners_LawnTools" Association="DFFDBModel.FK_Loaners_LawnTools">
+            <End Role="LawnTool" EntitySet="LawnTools" />
+            <End Role="Loaner" EntitySet="Loaners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loaners_Members" Association="DFFDBModel.FK_Loaners_Members">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="Loaner" EntitySet="Loaners" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Loaners_LawnTools">
+          <End Type="DFFDBModel.LawnTool" Role="LawnTool" Multiplicity="1" />
+          <End Type="DFFDBModel.Loaner" Role="Loaner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LawnTool">
+              <PropertyRef Name="LawnToolsID" />
+            </Principal>
+            <Dependent Role="Loaner">
+              <PropertyRef Name="LawnToolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loaners_Members">
+          <End Type="DFFDBModel.Member" Role="Member" Multiplicity="1" />
+          <End Type="DFFDBModel.Loaner" Role="Loaner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="Loaner">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DFFDBModelStoreContainer" CdmEntityContainer="DFFDBEntities">
+          <EntitySetMapping Name="LawnTools">
+            <EntityTypeMapping TypeName="DFFDBModel.LawnTool">
+              <MappingFragment StoreEntitySet="LawnTools">
+                <ScalarProperty Name="LawnToolsID" ColumnName="LawnToolsID" />
+                <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+                <ScalarProperty Name="ToolBrand" ColumnName="ToolBrand" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loaners">
+            <EntityTypeMapping TypeName="DFFDBModel.Loaner">
+              <MappingFragment StoreEntitySet="Loaners">
+                <ScalarProperty Name="LoanerID" ColumnName="LoanerID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="LawnToolID" ColumnName="LawnToolID" />
+                <ScalarProperty Name="DateLoaned" ColumnName="DateLoaned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="DFFDBModel.Member">
+              <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="FitnessPriority" ColumnName="FitnessPriority" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

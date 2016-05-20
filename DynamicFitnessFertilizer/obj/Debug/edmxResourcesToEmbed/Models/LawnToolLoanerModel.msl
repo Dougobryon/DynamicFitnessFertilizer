@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DFFDBModelStoreContainer" CdmEntityContainer="DFFDBEntities">
+    <EntitySetMapping Name="LawnTools">
+      <EntityTypeMapping TypeName="DFFDBModel.LawnTool">
+        <MappingFragment StoreEntitySet="LawnTools">
+          <ScalarProperty Name="LawnToolsID" ColumnName="LawnToolsID" />
+          <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+          <ScalarProperty Name="ToolBrand" ColumnName="ToolBrand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loaners">
+      <EntityTypeMapping TypeName="DFFDBModel.Loaner">
+        <MappingFragment StoreEntitySet="Loaners">
+          <ScalarProperty Name="LoanerID" ColumnName="LoanerID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="LawnToolID" ColumnName="LawnToolID" />
+          <ScalarProperty Name="DateLoaned" ColumnName="DateLoaned" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="DFFDBModel.Member">
+        <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="FitnessPriority" ColumnName="FitnessPriority" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,42 @@
+﻿@model DynamicFitnessFertilizer.Models.Loaner
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Loaner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateLoaned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateLoaned)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LawnTool.ToolName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LawnTool.ToolName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LoanerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

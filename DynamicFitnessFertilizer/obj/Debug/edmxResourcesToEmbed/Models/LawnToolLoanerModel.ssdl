@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DFFDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="LawnTools">
+    <Key>
+      <PropertyRef Name="LawnToolsID" />
+    </Key>
+    <Property Name="LawnToolsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ToolName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ToolBrand" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Loaners">
+    <Key>
+      <PropertyRef Name="LoanerID" />
+    </Key>
+    <Property Name="LoanerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberID" Type="int" Nullable="false" />
+    <Property Name="LawnToolID" Type="int" Nullable="false" />
+    <Property Name="DateLoaned" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Members">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="FitnessPriority" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Loaners_LawnTools">
+    <End Role="LawnTools" Type="Self.LawnTools" Multiplicity="1" />
+    <End Role="Loaners" Type="Self.Loaners" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LawnTools">
+        <PropertyRef Name="LawnToolsID" />
+      </Principal>
+      <Dependent Role="Loaners">
+        <PropertyRef Name="LawnToolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Loaners_Members">
+    <End Role="Members" Type="Self.Members" Multiplicity="1" />
+    <End Role="Loaners" Type="Self.Loaners" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="Loaners">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DFFDBModelStoreContainer">
+    <EntitySet Name="LawnTools" EntityType="Self.LawnTools" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Loaners" EntityType="Self.Loaners" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Loaners_LawnTools" Association="Self.FK_Loaners_LawnTools">
+      <End Role="LawnTools" EntitySet="LawnTools" />
+      <End Role="Loaners" EntitySet="Loaners" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Loaners_Members" Association="Self.FK_Loaners_Members">
+      <End Role="Members" EntitySet="Members" />
+      <End Role="Loaners" EntitySet="Loaners" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
