@@ -64,6 +64,6 @@ c:\users\wecancodeit\documents\visual studio 2015\Projects\DynamicFitnessFertili
 c:\users\wecancodeit\documents\visual studio 2015\Projects\DynamicFitnessFertilizer\DynamicFitnessFertilizer\bin\Microsoft.Owin.Security.Google.xml
 c:\users\wecancodeit\documents\visual studio 2015\Projects\DynamicFitnessFertilizer\DynamicFitnessFertilizer\bin\Microsoft.Owin.Security.Twitter.xml
 c:\users\wecancodeit\documents\visual studio 2015\Projects\DynamicFitnessFertilizer\DynamicFitnessFertilizer\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-c:\users\wecancodeit\documents\visual studio 2015\Projects\DynamicFitnessFertilizer\DynamicFitnessFertilizer\obj\Debug\DynamicFitnessFertilizer.csprojResolveAssemblyReference.cache
 c:\users\wecancodeit\documents\visual studio 2015\Projects\DynamicFitnessFertilizer\DynamicFitnessFertilizer\obj\Debug\DynamicFitnessFertilizer.dll
 c:\users\wecancodeit\documents\visual studio 2015\Projects\DynamicFitnessFertilizer\DynamicFitnessFertilizer\obj\Debug\DynamicFitnessFertilizer.pdb
+C:\Users\WeCanCodeIT\Documents\Visual Studio 2015\Projects\DynamicFitnessFertilizer\DynamicFitnessFertilizer\obj\Debug\DynamicFitnessFertilizer.csprojResolveAssemblyReference.cache

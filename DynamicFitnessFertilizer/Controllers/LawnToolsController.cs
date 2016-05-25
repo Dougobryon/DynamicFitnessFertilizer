@@ -54,7 +54,6 @@ namespace DynamicFitnessFertilizer.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(lawnTool);
         }
 
@@ -114,7 +113,6 @@ namespace DynamicFitnessFertilizer.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

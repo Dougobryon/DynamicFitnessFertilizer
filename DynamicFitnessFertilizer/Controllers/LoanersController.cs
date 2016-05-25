@@ -57,7 +57,6 @@ namespace DynamicFitnessFertilizer.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.LawnToolID = new SelectList(db.LawnTools, "LawnToolsID", "ToolName", loaner.LawnToolID);
             ViewBag.MemberID = new SelectList(db.Members, "MemberID", "FirstName", loaner.MemberID);
             return View(loaner);
@@ -123,7 +122,6 @@ namespace DynamicFitnessFertilizer.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
